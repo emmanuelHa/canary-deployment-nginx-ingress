@@ -81,6 +81,7 @@ kubectl delete -n my-custom-ns --all
 ```
 
 # TODO
+Use another docker image
 Bash is ugly to process curl responses
 Canary testing can be done with gitlab-ci as well
 
