@@ -10,7 +10,7 @@ A naive scenario could be to:
   if it is < threshold then deploy new version  
   if it is > threshold then remove the deployment of the version 
 
-One solution could be to use an Nginx Ingress controller in front of Ingresses. Each ingress associated with one version   
+One solution could be to use an Nginx Ingress controller in front of Ingresses. Each ingress associated with one version of an application.   
 
 Two providers of Nginx Ingress Controller exist:
 - Nginx one: https://docs.nginx.com/nginx-ingress-controller/
