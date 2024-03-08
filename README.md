@@ -23,7 +23,7 @@ Here the latter is used (not because it's the best one)
 
 Prerequisites:
 - be logged to DockerHub
-- Kubernetes intstalled and started
+- Kubernetes installed and started
 
 ## Create a new namespace:
 ```bash
