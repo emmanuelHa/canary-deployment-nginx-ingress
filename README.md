@@ -32,7 +32,9 @@ kubectl create namespace ingress-nginx
 ## Install Nginx Ingress Controller
 
 ### Either from all in once modified manifest (version 1.9.5)
+```bash
 kubectl apply -f nginx-ingress.1.9.5.yaml
+```
 
 ### Either from scratch
 - you can install it with the helm of Helm
@@ -64,9 +66,10 @@ kubectl apply -f config-canary-1.4.yaml
 ## GET external IP of load balancer:
 ```bash
 kubectl get svc ingress-nginx-controller  -n ingress-nginx
-```
+
 NAME                       TYPE           CLUSTER-IP      EXTERNAL-IP   PORT(S)                      AGE
 ingress-nginx-controller   LoadBalancer   w.x.y.z         IP or localhost     80:31443/TCP,443:31189/TCP   5m
+```
 
 ## Launch 10 curl every each seconds service version 1.3 and 1.4 and display error rates:
 ```bash
@@ -74,7 +77,7 @@ ingress-nginx-controller   LoadBalancer   w.x.y.z         IP or localhost     80
 ```
 
 # Clean up everything:
-TODO: create a dedicated namespace for all resrouces 
+TODO: create a dedicated namespace for all resources 
 ```bash
 kubectl delete -f nginx-ingress.1.9.5.yaml
 kubectl delete -n my-custom-ns --all
