@@ -5,7 +5,7 @@ Imagine each application version has an endpoint you can use to assume the deplo
 A naive scenario could be to:
 - loop for a while,
 - curl a load balancer endpoint, 
-- depending on which version was curled deternmine the error ratio for each version of the deployment (1.3 or 1.4 or 1.5)
+- depending on which version was curled determine the error ratio for each version of the deployment (1.3 or 1.4 or 1.5)
 - based on this ratio   
   if it is < threshold then deploy new version  
   if it is > threshold then remove the deployment of the version 
