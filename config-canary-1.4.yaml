@@ -1,0 +1,63 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: novel-canary
+  labels:
+    app: novel-canary
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: novel-canary
+  template:
+    metadata:
+      labels:
+        app: novel-canary
+    spec:
+      containers:
+      - name: canary-backend
+        image: blentai/hands-on-k8s-canary:1.4
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            memory: "256Mi"
+            cpu: "0.25"
+          limits:
+            memory: "512Mi"
+            cpu: "0.5"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: novel-app-service-canary
+spec:
+  ports:
+    - port: 80
+      targetPort: 3000
+      protocol: TCP
+  selector:
+    app: novel-canary
+---
+# Ingress
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: canary
+  annotations:
+    ingress.kubernetes.io/rewrite-target: /
+    nginx.ingress.kubernetes.io/canary: "true"
+    nginx.ingress.kubernetes.io/canary-weight: "50"
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: canary-app.com
+    http:
+      paths:
+      - pathType: Prefix
+        path: /
+        backend:
+          service:
+            name: novel-app-service-canary
+            port:
+              number: 80
