@@ -37,7 +37,7 @@ kubectl apply -f nginx-ingress.1.9.5.yaml
 ```
 
 ### Either from scratch
-- you can install it with the helm of Helm
+- you can install it with the help of Helm
   Follow the instructions: https://kubernetes.github.io/ingress-nginx/deploy/#quick-start
 - Once applied you should modify the configMap ingress-nginx-controller in the namespace: ingress-nginx to add two annotations.
 Doc is here: https://kubernetes.github.io/ingress-nginx/user-guide/nginx-configuration/configmap/
